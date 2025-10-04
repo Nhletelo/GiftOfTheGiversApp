@@ -1,0 +1,68 @@
+﻿@model IEnumerable<GiftOfTheGiversApp.Models.DisasterReport>
+
+@{
+    ViewData["Title"] = "Disaster Reports";
+}
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3">Disaster Reports</h1>
+        <a class="btn btn-success" asp-action="Create">Create New</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.User)</th>
+                    <th>@Html.DisplayNameFor(model => model.Location)</th>
+                    <th>@Html.DisplayNameFor(model => model.Description)</th>
+                    <th>@Html.DisplayNameFor(model => model.ReportDate)</th>
+                    <th>@Html.DisplayNameFor(model => model.Status)</th>
+                    <th>@Html.DisplayNameFor(model => model.Severity)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.User.Email</td>
+                        <td>@item.Location</td>
+                        <td>@item.Description</td>
+                        <td>@item.ReportDate.ToString("yyyy-MM-dd")</td>
+                        <td>@item.Status</td>
+                        <td>@item.Severity</td>
+                        <td>
+                            <a class="btn btn-sm btn-primary me-1" asp-action="Edit" asp-route-id="@item.ReportId">Edit</a>
+                            <a class="btn btn-sm btn-info me-1 text-white" asp-action="Details" asp-route-id="@item.ReportId">Details</a>
+                            <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.ReportId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f4f8fb;
+    }
+
+    h1.h3 {
+        font-weight: 600;
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+    }
+
+    .btn-sm {
+        font-size: 0.8rem;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #e9f5ff;
+    }
+</style>

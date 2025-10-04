@@ -1,0 +1,68 @@
+﻿@model IEnumerable<GiftOfTheGiversApp.Models.Volunteer>
+
+@{
+    ViewData["Title"] = "Volunteers";
+}
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3">Volunteers</h1>
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+            <table class="table table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.User)</th>
+                        <th>@Html.DisplayNameFor(model => model.Availability)</th>
+                        <th>@Html.DisplayNameFor(model => model.Skills)</th>
+                        <th>@Html.DisplayNameFor(model => model.Task)</th>
+                        <th>@Html.DisplayNameFor(model => model.TaskStatus)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.User.Email)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Availability)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Skills)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Task.Description)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TaskStatus)</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.VolunteerId" class="btn btn-sm btn-success">Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.VolunteerId" class="btn btn-sm btn-info">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.VolunteerId" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f4f8fb;
+    }
+
+    .card {
+        border-radius: 10px;
+    }
+
+    .btn-sm {
+        margin-right: 5px;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #e9f2fb;
+    }
+
+    .table thead th {
+        border-bottom: 2px solid #dee2e6;
+    }
+</style>
