@@ -1,45 +1,44 @@
 ﻿@model GiftOfTheGiversApp.Models.HomeViewModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Home";
 }
 
 <div class="container-fluid p-0">
-    <!-- Hero Section with Background Image -->
-    <div class="text-center text-white py-5"
-         style="background-image: url('https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
-                background-size: cover;
-                background-position: center;
-                position: relative;">
 
-        <!-- Overlay for readability -->
-        <div style="position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);"></div>
-
-        <div class="position-relative">
-            <h1 class="display-4 fw-bold">Gift of the Givers</h1>
-            <p class="lead">Together we can make a difference during disasters and crises.</p>
-            <a asp-controller="Users" asp-action="Create" class="btn btn-light btn-lg mt-3">Get Started</a>
-        </div>
+    <!-- Hero Section -->
+    <div class="hero-section d-flex flex-column justify-content-center align-items-center text-center text-white">
+        <h1 class="display-4 fw-bold mb-3">Gift of the Givers</h1>
+        <p class="lead mb-4">Together, we transform lives during disasters and crises.</p>
+        <a asp-controller="Users" asp-action="Create" class="btn btn-light btn-lg">Get Started</a>
     </div>
 
     <!-- Features Section -->
     <div class="container py-5">
         <div class="row text-center g-4">
-            <div class="col-md-4">
-                <div class="p-4 border rounded shadow-sm h-100">
-                    <h5 class="fw-bold text-primary">Report Incidents</h5>
-                    <p class="text-muted">Quickly submit disaster reports so help can reach faster.</p>
+            <!-- Feature 1: Report Incidents -->
+            <div class="col-md-4 feature animate-on-scroll">
+                <div class="feature-card p-5 rounded shadow-sm h-100 bg-gradient-red">
+                    <i class="bi bi-exclamation-circle-fill display-4 mb-3"></i>
+                    <h5 class="fw-bold">Report Incidents</h5>
+                    <p>Alert us to emergencies in your community to ensure rapid response and support.</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="p-4 border rounded shadow-sm h-100">
-                    <h5 class="fw-bold text-primary">Donate Resources</h5>
-                    <p class="text-muted">Contribute food, clothing, or medical aid to support victims.</p>
+
+            <!-- Feature 2: Donate Resources -->
+            <div class="col-md-4 feature animate-on-scroll">
+                <div class="feature-card p-5 rounded shadow-sm h-100 bg-gradient-green">
+                    <i class="bi bi-gift-fill display-4 mb-3"></i>
+                    <h5 class="fw-bold">Donate Resources</h5>
+                    <p>Provide essentials like food, clothing, or medical aid to people in need.</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="p-4 border rounded shadow-sm h-100">
-                    <h5 class="fw-bold text-primary">Volunteer Today</h5>
-                    <p class="text-muted">Offer your time and skills to join relief efforts.</p>
+
+            <!-- Feature 3: Volunteer Today -->
+            <div class="col-md-4 feature animate-on-scroll">
+                <div class="feature-card p-5 rounded shadow-sm h-100 bg-gradient-blue">
+                    <i class="bi bi-people-fill display-4 mb-3"></i>
+                    <h5 class="fw-bold">Volunteer Today</h5>
+                    <p>Join our team on the ground and make a meaningful impact in relief operations.</p>
                 </div>
             </div>
         </div>
@@ -47,8 +46,103 @@
 
     <!-- Call to Action -->
     <div class="bg-light text-center py-5">
-        <h3 class="fw-bold text-primary">Be Part of the Change</h3>
-        <p class="text-muted">Every action matters. Join us and make a difference!</p>
+        <h3 class="fw-bold text-primary mb-3">Be Part of the Change</h3>
+        <p class="text-muted mb-4">Every action matters. Join us and help transform lives!</p>
         <a asp-controller="Users" asp-action="Login" class="btn btn-primary btn-lg">Login to Contribute</a>
     </div>
+
 </div>
+
+<style>
+    /* Body & Hero */
+    body {
+        background-color: #f4f8fb;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .hero-section {
+        height: 70vh;
+        background: linear-gradient(135deg, #007bff, #00c6ff);
+        padding: 60px 20px;
+        position: relative;
+    }
+
+        .hero-section h1 {
+            font-size: 3rem;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+        }
+
+    /* Feature Cards */
+    .feature-card {
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        color: white;
+    }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover i {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+    /* Gradient Colors */
+    .bg-gradient-red {
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    }
+
+    .bg-gradient-green {
+        background: linear-gradient(135deg, #56ab2f, #a8e063);
+    }
+
+    .bg-gradient-blue {
+        background: linear-gradient(135deg, #2193b0, #6dd5ed);
+    }
+
+    /* Scroll Animations */
+    .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease-out;
+    }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    /* Call to Action */
+    .btn-primary {
+        background: linear-gradient(135deg, #007bff, #00c6ff);
+        border: none;
+        font-weight: 600;
+        border-radius: 50px;
+        padding: 12px 35px;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #0056b3, #008cff);
+        }
+</style>
+
+<script>
+    // Scroll animation
+    const features = document.querySelectorAll('.animate-on-scroll');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.2 });
+    features.forEach(feature => observer.observe(feature));
+</script>

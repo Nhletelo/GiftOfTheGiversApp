@@ -57,28 +57,65 @@
     @await Html.PartialAsync("_ValidationScriptsPartial")
 }
 
-
 <style>
     body {
-        background-color: #f4f8fb;
+        background-color: #eef2f7; /* soft, calming background */
     }
 
     .card {
-        border-radius: 10px;
+        border-radius: 12px;
+        background-color: #ffffff;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     }
 
     .card-header {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        background: linear-gradient(135deg, #ff6b6b, #ff4757); /* warm gradient header */
+        color: #ffffff;
+        font-weight: 600;
+        text-align: center;
     }
 
     .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
+        background: linear-gradient(135deg, #6a11cb, #2575fc); /* purple-blue gradient */
+        border: none;
+        color: #ffffff;
+        font-weight: 600;
+        transition: all 0.3s ease;
     }
 
         .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            transform: scale(1.05);
         }
+
+    .form-control:focus {
+        border-color: #6a11cb;
+        box-shadow: 0 0 0 0.2rem rgba(106,17,203,0.25);
+    }
+
+    .card-footer {
+        background-color: #f8f9fa;
+        padding: 15px 0;
+        border-top: 1px solid #dee2e6;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+
+        .card-footer small {
+            font-size: 0.9rem;
+            color: #495057;
+        }
+
+        .card-footer a {
+            color: #6a11cb;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+            .card-footer a:hover {
+                color: #2575fc;
+                text-decoration: underline;
+            }
 </style>

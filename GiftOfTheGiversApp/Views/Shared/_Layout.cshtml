@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - GiftOfTheGiversApp</title>
+    <title>@ViewData["Title"] - Gift of the Givers</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -11,28 +11,32 @@
     <style>
         body {
             background-color: #f4f8fb;
+            font-family: 'Poppins', sans-serif;
         }
 
+        /* Navbar */
         .navbar-custom {
-            background-color: #007bff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #032, #034);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
             .navbar-custom .navbar-brand,
             .navbar-custom .nav-link {
                 color: white !important;
-                font-weight: 500;
+                font-weight: 600;
+                transition: color 0.3s ease, transform 0.2s ease;
             }
 
                 .navbar-custom .nav-link:hover {
-                    color: #e9ecef !important;
+                    color: #e0f7fa !important;
+                    transform: scale(1.05);
                 }
 
             .navbar-custom .navbar-toggler-icon {
                 background-color: white;
             }
 
-        /* User dropdown styling */
+        
         .user-dropdown .nav-link {
             display: flex;
             align-items: center;
@@ -41,16 +45,20 @@
             border-radius: 50px;
             padding: 5px 15px;
             font-weight: 500;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
 
             .user-dropdown .nav-link:hover {
                 background-color: rgba(255,255,255,0.35);
-                color: white !important;
+                transform: scale(1.05);
             }
 
         .user-dropdown .dropdown-menu {
             right: 0;
             left: auto;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            animation: dropdownFade 0.3s ease forwards;
         }
 
         .user-dropdown i {
@@ -60,38 +68,59 @@
         .dropdown-item i {
             margin-right: 8px;
         }
+
+        /* Buttons */
+        .btn-custom {
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+
+            .btn-custom:hover {
+                transform: scale(1.05);
+                background: linear-gradient(135deg, #00c6ff, #007bff);
+                color: white;
+            }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #00c6ff, #007bff);
+            color: white;
+            padding: 20px 0;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+            footer a {
+                color: #e0f7fa;
+                text-decoration: underline;
+            }
+
+                footer a:hover {
+                    color: white;
+                }
     </style>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-light navbar-custom border-bottom mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GiftOfTheGiversApp</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Gift of the Givers</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
                     <ul class="navbar-nav flex-grow-1 justify-content-end">
                         @if (string.IsNullOrEmpty(Context.Session.GetString("UserEmail")))
                         {
-                            <!-- User not logged in -->
-                            <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Create">Register</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Login">Login</a>
-                            </li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li class="nav-item"><a class="nav-link btn-custom" asp-controller="Users" asp-action="Create">Register</a></li>
+                            <li class="nav-item"><a class="nav-link btn-custom" asp-controller="Users" asp-action="Login">Login</a></li>
                         }
                         else
                         {
-                            <!-- User logged in -->
                             <li class="nav-item dropdown user-dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-person"></i> @Context.Session.GetString("UserName")
+                                    <i class="bi bi-person-circle"></i> @Context.Session.GetString("UserName")
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li>
@@ -114,9 +143,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted mt-5">
-        <div class="container text-center py-3">
-            &copy; 2025 - GiftOfTheGiversApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="text-center mt-5">
+        <div class="container">
+            &copy; 2025 - Gift of the Givers 
         </div>
     </footer>
 
